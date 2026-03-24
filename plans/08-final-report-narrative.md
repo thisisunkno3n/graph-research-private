@@ -2,6 +2,8 @@
 
 **Purpose:** Notes on how to frame the notebook results in the final report so they tie back to the hypothesis clearly.
 
+**Numbers:** Prefer metrics from **`results/`** (export cell at end of `graph_research_presentation.ipynb`) over stale tables in this repo or embedded notebook outputs. See **`CLAUDE.md`**, **`AGENTS.md`**, and **`results/README.md`**.
+
 ---
 
 ## Hypothesis (restate in report intro)

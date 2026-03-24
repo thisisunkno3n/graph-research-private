@@ -1,45 +1,49 @@
 # Notebook Architecture: graph_research_presentation.ipynb
 
-## Cell Map (36 cells)
+## Cell Map (40 cells)
 
-| Cell | ID | Type | Purpose |
-|------|----|------|---------|
-| 0 | c1df530f | markdown | Title + overview |
-| 1 | e7242abc | code | Imports, seed, GPU check, plot style |
-| 2 | dcf1443e | markdown | Dataset design explanation |
-| 3 | fc8bac06 | code | `build_dataset()` |
-| 4 | 96e49ee6 | markdown | Visualization intro |
-| 5 | c2391eb6 | code | `decode_edges_from_x()` + NetworkX viz |
-| 6 | 31b180ee | markdown | Train/val split explanation |
-| 7 | 93177cc4 | code | `split_data()`, `collate()`, loaders |
-| 8 | 58e82f71 | markdown | Attention mask explanation |
-| 9 | 811fd667 | code | `sliding_window_mask()`, `graph_token_mask()`, cache |
-| 10 | — | markdown | Multi-hop graph mask explanation |
-| 11 | — | code | `khop_graph_token_mask()` |
-| 12 | e2d13f95 | markdown | Model architecture explanation |
-| 13 | af6b90b2 | code | `Block`, `TinyModel` classes |
-| 14 | l7y8dgk18i9 | code | `SimpleGCN` class |
-| 15 | d2c086be | markdown | Training loop explanation |
-| 16 | bc26897c | code | `expand_mask_for_heads()`, `eval_acc()`, `train_one()` |
-| 17 | abe2d91e | code | GCN infra: `tokens_to_graph()`, `collate_gcn()`, `eval_gcn_acc()`, `train_gcn()`, `run_with_gcn()`, plot helpers |
-| 18 | 6c416614 | markdown | Experiment explanation |
-| 19 | 6da8877e | code | `_DATASET_CACHE`, `get_dataset()`, `run_three()` |
-| 20 | 595c76a0 | markdown | Note on graph allowed % |
-| 21 | 7fbb319e | code | `plot_hist()`, `plot_best_so_far()`, `grid_run()` + initial run |
-| 22 | — | markdown | Hyperparameter sweep intro |
-| 23 | — | code | `hp_sweep()`, `plot_sweep()`, sweep configs |
-| 24 | — | markdown | Attention visualization intro |
-| 25 | — | code | `get_attention_weights()`, `plot_attention_comparison()` |
-| 26 | — | markdown | Higher hop counts intro |
-| 27 | — | code | Higher k experiment (commented out) |
-| 28 | 8e0c1a22 | code | `run_multihop_comparison()`, `plot_multihop_comparison()` |
-| 29 | — | markdown | GCN baseline comparison intro |
-| 30 | cf9eb0e1 | code | GCN baseline experiment (commented out) |
-| 31 | bf6979df | markdown | Note on distractors=0 |
-| 32 | YFdm3Aa5dezv | code | Multi-seed experiment (5 seeds × 3 distractor levels) |
-| 33 | — | markdown | Accuracy vs Heuristic Shortcuts intro |
-| 34 | — | code | `measure_shortcut_baselines()`, `plot_accuracy_vs_shortcuts()` execution |
-| 35 | 61f428d1 | code | Extra runs + Pareto/surface/winner plots |
+| Cell | Type | Purpose |
+|------|------|---------|
+| 0 | markdown | Title + overview |
+| 1 | code | Imports, seed, GPU, plot style |
+| 2 | markdown | Dataset design |
+| 3 | code | `build_dataset()` |
+| 4 | markdown | Viz intro |
+| 5 | code | `decode_edges_from_x`, `query_start_and_k_from_x`, sample graph plot |
+| 6 | markdown | Train/val / loaders intro |
+| 7 | code | `split_data()`, `collate()` |
+| 8 | markdown | Attention masks intro |
+| 9 | code | `sliding_window_mask()`, `graph_token_mask()`, cache |
+| 10 | markdown | Multi-hop mask intro |
+| 11 | code | `khop_graph_token_mask()` |
+| 12 | markdown | Model intro |
+| 13 | code | `Block`, `TinyModel` |
+| 14 | code | `SimpleGCN` |
+| 15 | markdown | Training loop intro |
+| 16 | code | `expand_mask_for_heads()`, `eval_acc()`, `train_one()` |
+| 17 | code | GCN infra, `run_with_gcn()`, plot helpers |
+| 18 | markdown | `run_three` intro |
+| 19 | code | `_DATASET_CACHE`, `get_dataset()`, `run_three()` |
+| 20 | markdown | Note on graph allowed % |
+| 21 | code | `plot_hist`, `plot_best_so_far`, `measure_shortcut_baselines`, `plot_accuracy_vs_shortcuts`, `grid_run` defs |
+| 22 | code | Main experiment run + `plot_hist` / `plot_best_so_far` |
+| 23 | markdown | HP sweep intro |
+| 24 | code | `hp_sweep`, `plot_sweep` |
+| 25 | markdown | Attention viz intro |
+| 26 | code | `get_attention_weights`, `plot_attention_comparison` |
+| 27 | markdown | Higher k intro |
+| 28 | code | Higher k (commented `run_three` k=4/5) |
+| 29 | code | `run_multihop_comparison`, `plot_multihop_comparison` |
+| 30 | markdown | GCN comparison intro |
+| 31 | code | GCN experiment (commented) |
+| 32 | markdown | Note `distractors=0` |
+| 33 | code | Multi-seed × distractors → `rows` |
+| 34 | markdown | Shortcuts intro |
+| 35 | code | `measure_shortcut_baselines` + `plot_accuracy_vs_shortcuts` |
+| 36 | code | `pareto_plot`, `surface_plot`, `winner_heatmap`, `line_plot` defs |
+| 37 | code | Run analysis plots (`df` from cell 22 `grid_run`) |
+| 38 | markdown | **Export results** for agents (Claude Code / Cursor) / git |
+| 39 | code | Write `results/*.csv`, `results/*.json` |
 
 ## Key Functions
 

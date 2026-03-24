@@ -1,0 +1,7 @@
+# Pin versions loosely so Colab and local envs stay compatible.
+torch>=2.1
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+networkx>=3.0
+plotly>=5.18

@@ -1,0 +1,13 @@
+---
+description: Graph research — read CLAUDE.md; results/ for metrics; presentation notebook
+alwaysApply: true
+---
+
+# Graph-masked attention research (Cursor)
+
+- **Canonical brief:** Repo root **`CLAUDE.md`** — read it for goals, file map, export workflow, and conventions (same content Claude Code and other agents should follow).
+- **Also:** **`AGENTS.md`** points here; keep all three in sync by editing **`CLAUDE.md`** first, then refresh pointers if needed.
+- **Notebook:** `graph_research_presentation.ipynb` (GPU / Colab for full runs).
+- **Numbers:** Prefer **`results/*.csv`** and **`results/*.json`** over embedded `.ipynb` outputs; see **`results/README.md`**.
+- **Plans:** `plans/00-project-context.md`, `08-final-report-narrative.md`, `09-dataset-analysis.md`, `01-notebook-architecture.md`.
+- **Heavy jobs:** Do not run full `grid_run()` or multi-seed loops unless the user asks and has GPU; use exported results or `fast=True` / small `n` for smoke tests.
