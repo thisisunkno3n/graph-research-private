@@ -59,6 +59,12 @@ def run_three(...):
     ...
 ```
 
+### Bug 4: Sample graph viz treated `edges[:k]` as the true path (Cell 5)
+
+**Problem:** After `random.shuffle(blocks)` in `build_dataset()`, the first *k* edges returned by `decode_edges_from_x()` are **not** the ground-truth path — they are whatever blocks landed first in the token sequence. The viz highlighted random edge tuples, often showing multiple disconnected green fragments.
+
+**Fix:** Decode **start** and **k** from the query tail `[SEP, S, start, Kk]`, build `nx.DiGraph` from all decoded edges, then take the unique simple path of exactly *k* edges from start to label (same uniqueness guarantee as generation). Added `query_start_and_k_from_x()` and docstrings warning that decoded edge order is arbitrary.
+
 ## Optimizations Applied
 
 ### Opt 1: Vectorized `sliding_window_mask()` (Cell 9)
@@ -109,6 +115,10 @@ m.unsqueeze(1).expand(B, h, L, L).reshape(B * h, L, L)
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| Distractor structure leak | Medium | Distractors always go non-sink -> sink; model may learn structural shortcut |
-| No mixed precision (AMP) | Low | ~2x throughput gain possible on T4 with float16 |
-| `max_len=512` not validated | Low | Current configs fit (max L=429) but no bounds check if params increase |
+| `max_len=512` not validated | Low | Current configs fit (max L≈429) but no bounds check if params increase |
+| Shorter start→target paths possible | Low | See `plans/09-dataset-analysis.md` → *Moderate Issues* → **Shorter start→target routes are not forbidden** |
+| GCN adjacency symmetrized | Low | Design choice: undirected adjacency from directed edge list; document in report |
+
+### Shorter routes to the target (expanded)
+
+`build_dataset` rejects only **alternative** simple paths of **exactly *k* edges** to the **same** target as the planted path. It does **not** require that the target be unreachable in fewer than *k* hops. Labels remain correct (the target is always the endpoint *vₖ* of the constructed chain), but the task is **not** equivalent to “the unique node at graph distance *k* from start” or shortest-path. Mention this when defining the task in the write-up.
