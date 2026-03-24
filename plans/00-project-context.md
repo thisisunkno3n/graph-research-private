@@ -1,20 +1,33 @@
-# Project Context: Graph-Masked Self Attention For Multi-Hop Reasoning
+# Project Context: Graph-Structured Attention Masking as an Inductive Bias for Transformer Reasoning
 
 **Author:** Felix Jeong
 **Affiliation:** Western University, Scholar's Elective 2200E
-**Date:** January 17, 2026
-**Keywords:** Transformers, Graph Neural Networks (GNNs), Sparse Attention
+**Date:** January 17, 2026 (updated March 24, 2026)
+**Keywords:** Transformers, Graph Neural Networks (GNNs), Sparse Attention, Inductive Bias
+
+## Revised Title
+
+"Graph-Structured Attention Masking as an Inductive Bias for Transformer Reasoning"
 
 ## Core Research Question
 
-Can a Transformer with a graph-structured attention mask improve multi-hop relational reasoning on graph data, compared to dense or window attention?
+Does restricting Transformer self-attention to graph-adjacent elements improve reasoning accuracy on graph-structured tasks? And can this principle generalize beyond graph-specific datasets?
 
 ## Approach
 
-Combine GNNs and Transformers by restricting self-attention to follow graph edges (adjacency-derived mask). This aims to:
-- Get the Transformer's long-range capability
-- Avoid GNN bottlenecks (over-smoothing, over-squashing)
-- Reduce the Transformer's quadratic attention cost via graph-like sparsity
+Use graph adjacency as an attention mask within a standard Transformer architecture. This tests whether known relational structure can serve as an effective inductive bias — forcing the model to attend only along structurally relevant connections. This aims to:
+- Demonstrate that structural sparsity improves Transformer reasoning
+- Provide a proof-of-concept for graph-derived attention masking
+- Motivate application to any domain with known relational structure
+
+## Long-Term Vision
+
+While current experiments use synthetic graph datasets, the underlying principle is general: any data with known relational structure can provide a graph-derived attention mask for Transformers. Two future directions:
+
+1. **Impose graph masks on existing data:** Take structured data (knowledge bases, protein interaction networks, document citation graphs) and use the relational structure as an attention mask on a standard Transformer.
+2. **Infer graph structure from flat data:** Take sequential data (text, code) and infer a graph (dependency parsing, co-reference, call graphs), then apply graph-masked attention.
+
+These extensions are out of scope for the current study but motivate the research direction.
 
 ## Hypothesis
 
@@ -39,30 +52,48 @@ A Transformer whose self-attention is restricted to the edges of a known graph w
 | Window (w=32) | Each token attends to +/- 32 positions | ~15-47% |
 | Graph-masked | Adjacency-based boolean mask; only graph-neighbor tokens attend | ~2.5-7.2% |
 
-## Key Results (k=3, averaged over 5 seeds)
+## Key Results (Updated March 2026 — with edge-order augmentation)
 
-### Validation Accuracy
+**Note:** Earlier interim results (Jan 2026) showed modest improvements but were confounded by memorization. Edge-order augmentation revealed the true picture below.
 
-| # Distractor Edges | Dense | Window | Graph |
-|---------------------|-------|--------|-------|
-| 20 | 4.80% | 5.47% | **6.07%** |
-| 40 | 7.27% | 6.07% | **9.73%** |
-| 80 | 21.80% | 5.60% | **28.73%** |
+### Headline Result: k=1 (single-hop reasoning)
+
+| Method | Val Accuracy | vs Random (3.3%) |
+|--------|-------------|-------------------|
+| Dense | ~12% | 3.6x |
+| Window | ~11% | 3.3x |
+| **Graph-masked** | **~70%** | **21x** |
+
+### Multi-Hop Results: k=2, k=3
+
+| k | Dense | Window | Graph |
+|---|-------|--------|-------|
+| 1 | 11.9% | 10.9% | **69.7%** |
+| 2 | 6.8% | 5.9% | 8.6% |
+| 3 | ~4.5% | ~4.0% | ~5.5% |
+
+All methods degrade to near-random at k≥2. Multi-hop compositional reasoning remains an open challenge.
 
 ### Attention Connectivity
 
-| # Distractors | Dense Allowed % | Window Allowed % | Graph Allowed % |
-|---------------|-----------------|------------------|-----------------|
-| 20 | 100.0 | 47.16 | 7.20 |
-| 40 | 100.0 | 27.48 | 4.21 |
-| 80 | 100.0 | 14.91 | 2.49 |
+| Mask Type | % Connections Used |
+|-----------|--------------------|
+| Dense | 100% |
+| Window (w=32) | ~28-50% |
+| Graph (1-hop) | ~5-8% |
 
 ### Key Findings
 
-1. Graph-masked attention wins at every distractor level; advantage grows with noise
-2. Achieves this with only ~2.5-7.2% connectivity (massive efficiency gain)
-3. Converges faster than dense (~0.305 peak vs ~0.237 at 40 distractors)
-4. Window attention is consistently weak — sequence locality != graph locality
+1. **Graph-masked attention achieves 6x the accuracy of dense at k=1** — the strongest result
+2. Achieves this with only ~5-8% connectivity (massive efficiency gain)
+3. Converges faster than dense or window conditions
+4. **Multi-hop reasoning fails for ALL methods** — the bottleneck is compositional, not informational
+5. The "sparsity paradox": expanding mask radius to k-hop approaches dense connectivity, losing the sparsity advantage
+6. **Methodological finding:** without edge-order augmentation, models memorize token sequences (85% train, 7% val) rather than learning graph structure. Augmentation was necessary for valid generalization measurement.
+
+### Implications for Broader Application
+
+The core finding — that graph-derived attention sparsity acts as a powerful inductive bias — suggests potential application beyond graph-specific tasks. Any domain with known relational structure (knowledge graphs, molecular interaction networks, document discourse graphs) could benefit from graph-structured attention masking in Transformers.
 
 ## References (from interim report)
 
