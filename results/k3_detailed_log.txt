@@ -1,0 +1,126 @@
+============================================================
+EXPERIMENT: k=3 Confirmation
+============================================================
+
+Config [FULL]: k=3, d=40, L=219, V=44, n=20000, layers=2, d_model=128, heads=4, dropout=0.2, epochs=50, patience=15
+
+-- DENSE --
+  dense ep1: train=0.019 | val=0.031 | best=0.031 | bad=0/15 | lr=0.00067 | 4.0s
+  dense ep2: train=0.036 | val=0.037 | best=0.037 | bad=0/15 | lr=0.00100 | 4.3s
+  dense ep3: train=0.030 | val=0.034 | best=0.037 | bad=1/15 | lr=0.00100 | 3.9s
+  dense ep4: train=0.042 | val=0.039 | best=0.039 | bad=0/15 | lr=0.00100 | 3.9s
+  dense ep5: train=0.044 | val=0.039 | best=0.039 | bad=1/15 | lr=0.00100 | 4.3s
+  dense ep6: train=0.037 | val=0.045 | best=0.045 | bad=0/15 | lr=0.00099 | 3.9s
+  dense ep7: train=0.031 | val=0.037 | best=0.045 | bad=1/15 | lr=0.00098 | 3.9s
+  dense ep8: train=0.025 | val=0.034 | best=0.045 | bad=2/15 | lr=0.00097 | 4.3s
+  dense ep9: train=0.045 | val=0.038 | best=0.045 | bad=3/15 | lr=0.00096 | 3.9s
+  dense ep10: train=0.031 | val=0.034 | best=0.045 | bad=4/15 | lr=0.00095 | 3.9s
+  dense ep11: train=0.050 | val=0.035 | best=0.045 | bad=5/15 | lr=0.00093 | 4.3s
+  dense ep12: train=0.052 | val=0.039 | best=0.045 | bad=6/15 | lr=0.00091 | 3.9s
+  dense ep13: train=0.053 | val=0.036 | best=0.045 | bad=7/15 | lr=0.00089 | 3.8s
+  dense ep14: train=0.034 | val=0.044 | best=0.045 | bad=8/15 | lr=0.00087 | 4.2s
+  dense ep15: train=0.042 | val=0.046 | best=0.046 | bad=0/15 | lr=0.00085 | 3.8s
+  dense ep16: train=0.042 | val=0.049 | best=0.049 | bad=0/15 | lr=0.00082 | 3.8s
+  dense ep17: train=0.053 | val=0.047 | best=0.049 | bad=1/15 | lr=0.00080 | 4.2s
+  dense ep18: train=0.048 | val=0.046 | best=0.049 | bad=2/15 | lr=0.00077 | 3.9s
+  dense ep19: train=0.050 | val=0.054 | best=0.054 | bad=0/15 | lr=0.00074 | 3.8s
+  dense ep20: train=0.053 | val=0.044 | best=0.054 | bad=1/15 | lr=0.00071 | 4.0s
+  dense ep21: train=0.039 | val=0.045 | best=0.054 | bad=2/15 | lr=0.00068 | 4.0s
+  dense ep22: train=0.047 | val=0.046 | best=0.054 | bad=3/15 | lr=0.00065 | 3.8s
+  dense ep23: train=0.050 | val=0.047 | best=0.054 | bad=4/15 | lr=0.00062 | 4.0s
+  dense ep24: train=0.058 | val=0.051 | best=0.054 | bad=5/15 | lr=0.00058 | 4.1s
+  dense ep25: train=0.056 | val=0.048 | best=0.054 | bad=6/15 | lr=0.00055 | 3.8s
+  dense ep26: train=0.045 | val=0.048 | best=0.054 | bad=7/15 | lr=0.00052 | 3.9s
+  dense ep27: train=0.055 | val=0.048 | best=0.054 | bad=8/15 | lr=0.00048 | 4.2s
+  dense ep28: train=0.077 | val=0.050 | best=0.054 | bad=9/15 | lr=0.00045 | 3.8s
+  dense ep29: train=0.061 | val=0.049 | best=0.054 | bad=10/15 | lr=0.00042 | 3.9s
+  dense ep30: train=0.047 | val=0.049 | best=0.054 | bad=11/15 | lr=0.00038 | 4.2s
+  dense ep31: train=0.067 | val=0.046 | best=0.054 | bad=12/15 | lr=0.00035 | 3.9s
+  dense ep32: train=0.072 | val=0.044 | best=0.054 | bad=13/15 | lr=0.00032 | 3.8s
+  dense ep33: train=0.042 | val=0.049 | best=0.054 | bad=14/15 | lr=0.00029 | 4.2s
+  dense ep34: train=0.042 | val=0.048 | best=0.054 | bad=15/15 | lr=0.00026 | 3.9s
+  dense early stop @ ep34 (best=0.054)
+  dense allowed ~100.0%
+  dense FINAL full-val acc = 0.048
+
+-- WINDOW --
+  window ep1: train=0.022 | val=0.035 | best=0.035 | bad=0/15 | lr=0.00067 | 4.6s
+  window ep2: train=0.033 | val=0.033 | best=0.035 | bad=1/15 | lr=0.00100 | 4.8s
+  window ep3: train=0.025 | val=0.030 | best=0.035 | bad=2/15 | lr=0.00100 | 4.6s
+  window ep4: train=0.034 | val=0.035 | best=0.035 | bad=3/15 | lr=0.00100 | 4.9s
+  window ep5: train=0.042 | val=0.034 | best=0.035 | bad=4/15 | lr=0.00100 | 4.6s
+  window ep6: train=0.039 | val=0.042 | best=0.042 | bad=0/15 | lr=0.00099 | 4.6s
+  window ep7: train=0.030 | val=0.029 | best=0.042 | bad=1/15 | lr=0.00098 | 4.9s
+  window ep8: train=0.047 | val=0.034 | best=0.042 | bad=2/15 | lr=0.00097 | 4.6s
+  window ep9: train=0.042 | val=0.036 | best=0.042 | bad=3/15 | lr=0.00096 | 4.8s
+  window ep10: train=0.037 | val=0.035 | best=0.042 | bad=4/15 | lr=0.00095 | 4.7s
+  window ep11: train=0.048 | val=0.037 | best=0.042 | bad=5/15 | lr=0.00093 | 4.6s
+  window ep12: train=0.041 | val=0.035 | best=0.042 | bad=6/15 | lr=0.00091 | 4.9s
+  window ep13: train=0.034 | val=0.036 | best=0.042 | bad=7/15 | lr=0.00089 | 4.6s
+  window ep14: train=0.048 | val=0.036 | best=0.042 | bad=8/15 | lr=0.00087 | 4.6s
+  window ep15: train=0.037 | val=0.037 | best=0.042 | bad=9/15 | lr=0.00085 | 4.9s
+  window ep16: train=0.047 | val=0.036 | best=0.042 | bad=10/15 | lr=0.00082 | 4.6s
+  window ep17: train=0.050 | val=0.037 | best=0.042 | bad=11/15 | lr=0.00080 | 4.9s
+  window ep18: train=0.034 | val=0.040 | best=0.042 | bad=12/15 | lr=0.00077 | 4.6s
+  window ep19: train=0.048 | val=0.035 | best=0.042 | bad=13/15 | lr=0.00074 | 4.6s
+  window ep20: train=0.061 | val=0.037 | best=0.042 | bad=14/15 | lr=0.00071 | 4.9s
+  window ep21: train=0.050 | val=0.037 | best=0.042 | bad=15/15 | lr=0.00068 | 4.6s
+  window early stop @ ep21 (best=0.042)
+  window allowed ~27.5%
+  window FINAL full-val acc = 0.037
+
+-- GRAPH --
+  graph ep1: train=0.031 | val=0.034 | best=0.034 | bad=0/15 | lr=0.00067 | 5.9s
+  graph ep2: train=0.044 | val=0.034 | best=0.034 | bad=0/15 | lr=0.00100 | 5.6s
+  graph ep3: train=0.042 | val=0.034 | best=0.034 | bad=1/15 | lr=0.00100 | 5.8s
+  graph ep4: train=0.053 | val=0.052 | best=0.052 | bad=0/15 | lr=0.00100 | 5.7s
+  graph ep5: train=0.041 | val=0.045 | best=0.052 | bad=1/15 | lr=0.00100 | 5.7s
+  graph ep6: train=0.058 | val=0.043 | best=0.052 | bad=2/15 | lr=0.00099 | 5.8s
+  graph ep7: train=0.053 | val=0.045 | best=0.052 | bad=3/15 | lr=0.00098 | 5.6s
+  graph ep8: train=0.045 | val=0.050 | best=0.052 | bad=4/15 | lr=0.00097 | 5.9s
+  graph ep9: train=0.061 | val=0.043 | best=0.052 | bad=5/15 | lr=0.00096 | 5.6s
+  graph ep10: train=0.075 | val=0.051 | best=0.052 | bad=6/15 | lr=0.00095 | 5.9s
+  graph ep11: train=0.070 | val=0.049 | best=0.052 | bad=7/15 | lr=0.00093 | 5.6s
+  graph ep12: train=0.064 | val=0.053 | best=0.053 | bad=0/15 | lr=0.00091 | 5.9s
+  graph ep13: train=0.059 | val=0.051 | best=0.053 | bad=1/15 | lr=0.00089 | 5.6s
+  graph ep14: train=0.061 | val=0.049 | best=0.053 | bad=2/15 | lr=0.00087 | 5.9s
+  graph ep15: train=0.061 | val=0.051 | best=0.053 | bad=3/15 | lr=0.00085 | 5.6s
+  graph ep16: train=0.050 | val=0.052 | best=0.053 | bad=4/15 | lr=0.00082 | 5.9s
+  graph ep17: train=0.070 | val=0.051 | best=0.053 | bad=5/15 | lr=0.00080 | 5.6s
+  graph ep18: train=0.058 | val=0.057 | best=0.057 | bad=0/15 | lr=0.00077 | 5.9s
+  graph ep19: train=0.069 | val=0.064 | best=0.064 | bad=0/15 | lr=0.00074 | 5.6s
+  graph ep20: train=0.056 | val=0.056 | best=0.064 | bad=1/15 | lr=0.00071 | 5.8s
+  graph ep21: train=0.073 | val=0.057 | best=0.064 | bad=2/15 | lr=0.00068 | 5.7s
+  graph ep22: train=0.055 | val=0.060 | best=0.064 | bad=3/15 | lr=0.00065 | 5.7s
+  graph ep23: train=0.070 | val=0.066 | best=0.066 | bad=0/15 | lr=0.00062 | 5.8s
+  graph ep24: train=0.077 | val=0.063 | best=0.066 | bad=1/15 | lr=0.00058 | 5.6s
+  graph ep25: train=0.083 | val=0.061 | best=0.066 | bad=2/15 | lr=0.00055 | 5.9s
+  graph ep26: train=0.077 | val=0.061 | best=0.066 | bad=3/15 | lr=0.00052 | 5.6s
+  graph ep27: train=0.091 | val=0.060 | best=0.066 | bad=4/15 | lr=0.00048 | 5.9s
+  graph ep28: train=0.064 | val=0.066 | best=0.066 | bad=5/15 | lr=0.00045 | 5.6s
+  graph ep29: train=0.081 | val=0.070 | best=0.070 | bad=0/15 | lr=0.00042 | 5.9s
+  graph ep30: train=0.059 | val=0.063 | best=0.070 | bad=1/15 | lr=0.00038 | 5.6s
+  graph ep31: train=0.078 | val=0.065 | best=0.070 | bad=2/15 | lr=0.00035 | 5.9s
+  graph ep32: train=0.111 | val=0.069 | best=0.070 | bad=3/15 | lr=0.00032 | 5.6s
+  graph ep33: train=0.083 | val=0.069 | best=0.070 | bad=4/15 | lr=0.00029 | 5.9s
+  graph ep34: train=0.053 | val=0.069 | best=0.070 | bad=5/15 | lr=0.00026 | 5.6s
+  graph ep35: train=0.103 | val=0.071 | best=0.071 | bad=0/15 | lr=0.00023 | 5.8s
+  graph ep36: train=0.097 | val=0.068 | best=0.071 | bad=1/15 | lr=0.00020 | 5.7s
+  graph ep37: train=0.097 | val=0.073 | best=0.073 | bad=0/15 | lr=0.00018 | 5.7s
+  graph ep38: train=0.094 | val=0.072 | best=0.073 | bad=1/15 | lr=0.00015 | 5.8s
+  graph ep39: train=0.097 | val=0.073 | best=0.073 | bad=0/15 | lr=0.00013 | 5.6s
+  graph ep40: train=0.102 | val=0.072 | best=0.073 | bad=1/15 | lr=0.00011 | 5.9s
+  graph ep41: train=0.106 | val=0.073 | best=0.073 | bad=0/15 | lr=0.00009 | 5.6s
+  graph ep42: train=0.122 | val=0.072 | best=0.073 | bad=1/15 | lr=0.00007 | 5.9s
+  graph ep43: train=0.097 | val=0.075 | best=0.075 | bad=0/15 | lr=0.00005 | 5.6s
+  graph ep44: train=0.094 | val=0.071 | best=0.075 | bad=1/15 | lr=0.00004 | 5.9s
+  graph ep45: train=0.098 | val=0.075 | best=0.075 | bad=2/15 | lr=0.00003 | 5.6s
+  graph ep46: train=0.098 | val=0.074 | best=0.075 | bad=3/15 | lr=0.00002 | 5.9s
+  graph ep47: train=0.084 | val=0.075 | best=0.075 | bad=4/15 | lr=0.00001 | 5.6s
+  graph ep48: train=0.080 | val=0.074 | best=0.075 | bad=5/15 | lr=0.00000 | 5.9s
+  graph ep49: train=0.087 | val=0.074 | best=0.075 | bad=6/15 | lr=0.00000 | 5.6s
+  graph ep50: train=0.108 | val=0.075 | best=0.075 | bad=7/15 | lr=0.00000 | 5.9s
+  graph allowed ~4.2%
+  graph FINAL full-val acc = 0.075
+
+k=3: dense=5.4%, window=4.2%, graph=7.5%

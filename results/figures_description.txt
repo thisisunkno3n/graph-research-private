@@ -1,0 +1,44 @@
+FIGURE DESCRIPTIONS (for presentation use)
+================================================================================
+
+FIG 1: k=1 Accuracy Bar Chart (fig1_k1_accuracy.png)
+- Grouped bar chart: Dense (blue), Window (orange), Graph (green)
+- Three groups: d=20, d=40, d=80
+- Shows graph dominance at d=20 (67.5%) and d=40 (50.2%)
+- All collapse at d=80
+- Error bars from multi-seed runs
+
+FIG 2: Accuracy vs Hops (fig2_accuracy_vs_hops.png)
+- Line plot, x-axis: hop count (k=1,2,3), y-axis: validation accuracy
+- d=40 held constant
+- Graph line drops from ~50% to ~7.5% to ~7.5%
+- Dense and Window flat near chance throughout
+- Dashed line at 3.3% random baseline
+- KEY FIGURE: shows graph advantage is single-hop only
+
+FIG 3: Convergence Curves (fig3_convergence.png)
+- Best-so-far validation accuracy over epochs
+- k=1, d=80 condition
+- All three methods slowly climb from ~3% to ~4-6%
+- Dense edges ahead slightly by epoch 50
+- Shows difficulty of high-distractor regime
+
+FIG 4: Attention Sparsity Bar Chart (fig4_sparsity.png)
+- Three bars: Dense 100%, Window 15.3%, Graph 2.5%
+- Percentage labels on top of each bar
+- KEY FIGURE: pairs with fig5 to show "less attention = more accuracy"
+
+FIG 5: Sparsity Paradox Scatter (fig5_sparsity_paradox.png)
+- x-axis: attention connections used (%)
+- y-axis: validation accuracy (k=1, d=20)
+- Three large dots: Dense (100%, 12.1%), Window (15.3%, 11.3%), Graph (2.5%, 67.5%)
+- Dashed line at 3.3% random baseline
+- HEADLINE FIGURE: "Less Attention = More Accuracy"
+- Shows inverse relationship between connectivity and performance
+
+FIG 6: Train vs Val Accuracy (fig6_train_val.png)
+- Dual line plot (solid=val, dashed=train) for each method
+- k=1, d=80 condition
+- Shows train and val track closely (no overfitting after augmentation fix)
+- Noisy but upward trend for dense
+- Window and graph relatively flat
