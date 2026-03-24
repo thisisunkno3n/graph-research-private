@@ -1,4 +1,4 @@
-# Notebook Architecture: graph_research_interim.ipynb
+# Notebook Architecture: graph_research_presentation.ipynb
 
 ## Cell Map (36 cells)
 

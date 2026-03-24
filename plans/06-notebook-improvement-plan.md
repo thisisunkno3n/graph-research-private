@@ -1,7 +1,7 @@
 # Notebook Improvement Plan
 
 **Created:** 2026-03-23
-**Target:** graph_research_interim.ipynb
+**Target:** graph_research_presentation.ipynb
 **Constraint:** Google Colab T4, solo 2nd-year CS student, must be explainable
 
 ---

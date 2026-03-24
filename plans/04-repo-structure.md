@@ -5,7 +5,7 @@
 ```
 graph-research-private/
   SE Interim Report FINAL FINAL.pdf    # Interim report (Jan 17, 2026)
-  graph_research_interim.ipynb          # All-in-one Colab notebook (bugfixed)
+  graph_research_presentation.ipynb     # All-in-one Colab notebook (bugfixed)
   plans/
     00-project-context.md               # Research question, setup, key results
     01-notebook-architecture.md         # Cell map, function reference, data flow
